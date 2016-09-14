@@ -1,0 +1,40 @@
+{
+	"Helsinki" : {
+		"Tampere" : 180,
+		"Turku" : 170,
+		"Kouvola" : 140 
+		},
+	"Turku" : {
+		"Tampere" : 160,
+		"Helsinki" : 170
+		},
+	"Tampere" : { 
+		"Helsinki" : 180,
+		"Jyväskylä" : 150,
+		"Turku" : 160,
+		"Vaasa" : 240
+		},
+	"Kuopio" : {
+		"Jyväskylä" : 150,
+		"Oulu" : 290
+		},
+	"Jyväskylä" : {
+		"Oulu" : 340,
+		"Kouvola" : 190,
+		"Kuopio" : 150,
+		"Tampere" : 150
+		},
+	"Kouvola" : {
+		"Helsinki" : 140,
+		"Jyväskylä" : 190
+		},
+	"Oulu" : {
+		"Vaasa" : 330,
+		"Kuopio" : 290,
+		"Jyväskylä" : 340
+		},
+	"Vaasa" : {
+		"Tampere" : 240,
+		"Oulu" : 330
+		}
+}
