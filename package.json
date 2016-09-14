@@ -1,0 +1,25 @@
+{
+  "name": "ohjprojektit",
+  "version": "1.0.0",
+  "description": "Ohjelmointiprojektit harkkatyö",
+  "main": "webapp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuusoKo/ProjTyo-1-Ohjelmistotekniikka.git"
+  },
+  "author": "juusoko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuusoKo/ProjTyo-1-Ohjelmistotekniikka/issues"
+  },
+  "homepage": "https://github.com/JuusoKo/ProjTyo-1-Ohjelmistotekniikka#readme",
+  "dependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "express": "^4.14.0",
+    "node-dijkstra": "^2.3.0"
+  }
+}
