@@ -6,12 +6,20 @@ var app = express();
 
 app.use(express.static('static'));
 
-var routes = require("./static/api.js")(app);
+//var routes = require("./static/api.js")(app);
 
 var bugData = [
 	{id: 1, priority: 'P1', status:'Open', owner:'Ravan', title:'App crashes on open'},
 	{id: 2, priority: 'P2', status:'New', owner:'Eddie', title:'Misaligned border on panel'}
 ];
+
+function test() {
+	var route = new Graph();
+	route.addNode('A', { B: 1, C: 2 });
+	route.addNode('B', { A: 1 });
+	route.addNode('C', { A: 2 });
+	console.log(route.path('B', 'C', { cost: true }));
+}
 
 app.get('/api/helsinki', function(req, res) {
 	db.collection('etaisyydet').find({}).toArray(function(err, docs){
