@@ -15,22 +15,27 @@
 */
 $(document).ready(function(){
 	console.log("qweq");
-	$("#buttondiv").text(getData("tampere"));
-//	test();
-});
+	//	$("#buttondiv").text(getData("tampere"));
+	//	test();
+	console.log("asd");
+	ReactDOM.render(
+		<div>Hello, world!</div>,
+	     	document.getElementById('hellodiv')
+	);
 
-function getData(haettavaKaupunki){
-	console.log("getdata");
-	$.ajax({
-			url: "/api/"+haettavaKaupunki,
-			success: function(response){
-				console.log(response);
-				return response;
-			}
+	$("#calcDistance").click(function() {
+		console.log("pls");
+		var start = $("#start option:selected").text();
+		var goal = $("#goal option:selected").text();
+
+		$.ajax({
+				url: "/api/"+start+"/"+goal,
+				success: function(response){
+					console.log(response);
+
+					$("#distanceDiv span").text("Etäisyys: " + response.cost + "km");
+					return response;
+				}
+		});
 	});
-}
-console.log("asd");
-ReactDOM.render(
-	<div>Hello, world!</div>,
-     	document.getElementById('hellodiv')
-);
+});

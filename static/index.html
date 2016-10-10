@@ -2,6 +2,9 @@
 <html>
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
+    <script src="/App.js" type="text/javascript"></script>
     <meta charset="UTF-8" />
     <title>Bug Tracker - a React tutorial using MERN</title>
     <style>
@@ -12,19 +15,31 @@
   <body>
     <div id="main"></div>
     <div id="hellodiv">täällä on hellodiv</div>
-    <button onclick="getData('helsinki')">Helsinki</button>
-    <button onclick="getData('tampere')">Tampere</button>
-    <button onclick="getData('kuopio')">Kuopio</button>
-    <button onclick="getData('jyväskylä')">Jyväskylä</button>
-    <button onclick="getData('kouvola')">Kouvola</button>
-    <button onclick="getData('oulu')">Oulu</button>
-    <button onclick="getData('vaasa')">Vaasa</button>
-    <button onclick="getData('turku')">Turku</button>
+    <select id="start">
+      <option value="Tampere">Tampere</option>
+      <option value="Helsinki">Helsinki</option>
+      <option value="Turku">Turku</option>
+      <option value="Kuopio">Kuopio</option>
+      <option value="Jyväskylä">Jyväskylä</option>
+      <option value="Kouvola">Kouvola</option>
+      <option value="Oulu">Oulu</option>
+      <option value="Vaasa">Vaasa</option>
+    </select>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
-    <script src="/App.js" type="text/javascript"></script>
+    <select id="goal">
+      <option value="Tampere">Tampere</option>
+      <option value="Helsinki">Helsinki</option>
+      <option value="Turku">Turku</option>
+      <option value="Kuopio">Kuopio</option>
+      <option value="Jyväskylä">Jyväskylä</option>
+      <option value="Kouvola">Kouvola</option>
+      <option value="Oulu">Oulu</option>
+      <option value="Vaasa">Vaasa</option>
+    </select>
 
-    <div id="buttondiv"></div>
+    <button id="calcDistance">Laske etäisyys</button>
+
+    <div id="distanceDiv"><span>Etäisyys: </span></div>
+
   </body>
 </html>
