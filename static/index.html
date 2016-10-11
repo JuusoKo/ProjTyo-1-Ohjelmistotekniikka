@@ -4,7 +4,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
-    <script src="/App.js" type="text/javascript"></script>
+    <script src="/bundle.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/index.css"/>
+
+
     <meta charset="UTF-8" />
     <title>Bug Tracker - a React tutorial using MERN</title>
     <style>
@@ -13,33 +16,18 @@
     </style>
   </head>
   <body>
-    <div id="main"></div>
     <div id="hellodiv">täällä on hellodiv</div>
-    <select id="start">
-      <option value="Tampere">Tampere</option>
-      <option value="Helsinki">Helsinki</option>
-      <option value="Turku">Turku</option>
-      <option value="Kuopio">Kuopio</option>
-      <option value="Jyväskylä">Jyväskylä</option>
-      <option value="Kouvola">Kouvola</option>
-      <option value="Oulu">Oulu</option>
-      <option value="Vaasa">Vaasa</option>
-    </select>
 
-    <select id="goal">
-      <option value="Tampere">Tampere</option>
-      <option value="Helsinki">Helsinki</option>
-      <option value="Turku">Turku</option>
-      <option value="Kuopio">Kuopio</option>
-      <option value="Jyväskylä">Jyväskylä</option>
-      <option value="Kouvola">Kouvola</option>
-      <option value="Oulu">Oulu</option>
-      <option value="Vaasa">Vaasa</option>
-    </select>
+    <div id="start-dropdown"></div>
+    <div id="goal-dropdown"></div>
 
     <button id="calcDistance">Laske etäisyys</button>
 
     <div id="distanceDiv"><span>Etäisyys: </span></div>
+    <div id="routeDiv"><span>Reitti: </span></div>
+
+    <canvas id="myCanvas" width="800" height="600"></canvas>
+    <script src="/App.js" type="text/javascript"></script>
 
   </body>
 </html>

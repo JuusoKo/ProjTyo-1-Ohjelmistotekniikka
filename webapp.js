@@ -1,5 +1,6 @@
 var express = require('express');
-const Graph = require('node-dijkstra')
+var browserify = require('browserify-middleware');
+const Graph = require('node-dijkstra');
 
 var MongoClient = require('mongodb').MongoClient;
 
@@ -7,6 +8,7 @@ var app = express();
 
 app.use(express.static('static'));
 
+app.get('/bundle.js', browserify(['react', 'react-dom', 'react-simple-dropdown']));
 
 app.get('/api/:start/:goal', function(req, res) {
 		db.collection('etaisyydet').find({}).toArray(function(err, docs){
