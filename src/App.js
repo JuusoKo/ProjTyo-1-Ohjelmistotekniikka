@@ -1,7 +1,6 @@
-var React = require('react');
-var Dropdown = require('react-simple-dropdown');
-var DropdownTrigger = Dropdown.DropdownTrigger;
-var DropdownContent = Dropdown.DropdownContent;
+const Graph = require('node-dijkstra');
+
+
 
 
 var CustomDropdown = React.createClass({
@@ -58,29 +57,23 @@ var CustomDropdown = React.createClass({
 
 var cities = [{
 		name: "Tampere",
-		key: 1
 }, {
 		name: "Helsinki",
-		key: 2
 }, {
 		name: "Vaasa",
-		key: 3
 },{
 		name: "Kuopio",
-		key: 4
 },{
 		name: "Jyväskylä",
-		key: 5
 },{
 		name: "Oulu",
-		key: 6
 },{
 		name: "Kouvola",
-		key: 7
 },{
 		name: "Turku",
-		key: 8
 }];
+
+sessionStorage.setItem("citiesArray", cities);
 
 ReactDOM.render(<CustomDropdown list={cities} /*selected={cities[0]}*/ />, document.getElementById("start-dropdown"));
 ReactDOM.render(<CustomDropdown list={cities} /*selected={cities[1]}*/ />, document.getElementById("goal-dropdown"));
@@ -91,6 +84,7 @@ var resetCanvas = function(){
 		success: function(response){
 			var locArr = $.map(response, function(el) { return el });
 			console.log(locArr);
+			sessionStorage.setItem('locationArray', locArr);
 			var canvas = document.getElementById('myCanvas');
 			var context = canvas.getContext('2d');
 			locArr.forEach(function(city){
@@ -99,10 +93,87 @@ var resetCanvas = function(){
 				context.closePath();
 				context.fillStyle = "red";
 				context.fill();
+				context.font="20px Georgia";
+				context.fillText(city.name,city.x+10,city.y+10);
 			});
 		}
 	});
 }
+
+var drawRoutes = function(){
+
+	var canvas = document.getElementById('myCanvas');
+	var context = canvas.getContext('2d');
+
+	// Helsinki - Tampere
+	context.beginPath();
+	context.moveTo(260, 825);
+	context.lineTo(200,700);
+	context.stroke();
+
+	// Helsinki - Turku
+	context.beginPath();
+	context.moveTo(260, 825);
+	context.lineTo(120,775);
+	context.stroke();
+
+	// Helsinki - Kouvola
+	context.beginPath();
+	context.moveTo(260, 825);
+	context.lineTo(425,750);
+	context.stroke();
+
+	// Turku - Tampere
+	context.beginPath();
+	context.moveTo(120, 775);
+	context.lineTo(200,700);
+	context.stroke();
+
+	// Tampere - Jyväskylä
+	context.beginPath();
+	context.moveTo(200, 700);
+	context.lineTo(341,580);
+	context.stroke();
+
+	// Tampere - Vaasa
+	context.beginPath();
+	context.moveTo(200, 700);
+	context.lineTo(125,475);
+	context.stroke();
+
+	// Kuopio - Jyväskylä
+	context.beginPath();
+	context.moveTo(500, 490);
+	context.lineTo(341,580);
+	context.stroke();
+
+	// Kuopio - Oulu
+	context.beginPath();
+	context.moveTo(500,490);
+	context.lineTo(321,200);
+	context.stroke();
+
+	// Jyväskylä - Oulu
+	context.beginPath();
+	context.moveTo(341, 580);
+	context.lineTo(321,200);
+	context.stroke();
+
+	// Jyväskylä - Kouvola
+	context.beginPath();
+	context.moveTo(341, 580);
+	context.lineTo(425,750);
+	context.stroke();
+
+	// Oulu - Vaasa
+	context.beginPath();
+	context.moveTo(321, 200);
+	context.lineTo(125,475);
+	context.stroke();
+
+}
+
+
 
 $(document).ready(function(){
 
@@ -113,20 +184,9 @@ $(document).ready(function(){
 	console.log("JUMALITA")
 
 
-	// ReactDOM.render(
-	// 	startElement,
-	// 	document.getElementById('start-dropdown')
-	// );
-
-	// ReactDOM.render(
-	// 	goalElement,
-	// 	document.getElementById('goal-dropdown')
-	// );
-
 	$("#calcDistance").click(function() {
 		console.log("pls");
-		// var start = $("#start-dropdown option:selected").text();
-		// var goal = $("#goal-dropdown option:selected").text();
+
 
 		var start = $("#start-dropdown").children(".dropdown-container").children(".dropdown-display").children("span").text();
 		var goal =  $("#goal-dropdown").children(".dropdown-container").children(".dropdown-display").children("span").text();
@@ -149,14 +209,6 @@ $(document).ready(function(){
 		});
 	});
 
-	var canvas = document.getElementById('myCanvas');
-	var context = canvas.getContext('2d');
-	var imageObj = new Image();
-
-	imageObj.onload = function() {
-		context.drawImage(imageObj, 0, 0, 682, 950);
-	};
-	imageObj.src = 'finland.jpg';
-
 	resetCanvas();
+	drawRoutes();
 });

@@ -8,7 +8,7 @@ var app = express();
 
 app.use(express.static('static'));
 
-app.get('/bundle.js', browserify(['react', 'react-dom', 'react-simple-dropdown']));
+app.get('/bundle.js', browserify(['react', 'react-dom', 'node-dijkstra']));
 
 app.get('/locations', function(req, res){
 	db.collection('sijainnit').find({}).toArray(function(err,docs){
@@ -23,8 +23,7 @@ app.get('/routes', function(req, res) {
 		db.collection('etaisyydet').find({}).toArray(function(err, docs){
 			distances = docs[0];
 			delete distances._id;
-			const route = new Graph(distances);
-			res.json(route);
+			res.send(distances);
 		});
 });
 
