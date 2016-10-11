@@ -85,6 +85,24 @@ var cities = [{
 ReactDOM.render(<CustomDropdown list={cities} /*selected={cities[0]}*/ />, document.getElementById("start-dropdown"));
 ReactDOM.render(<CustomDropdown list={cities} /*selected={cities[1]}*/ />, document.getElementById("goal-dropdown"));
 
+var resetCanvas = function(){
+	$.ajax({
+		url: "/locations",
+		success: function(response){
+			var locArr = $.map(response, function(el) { return el });
+			console.log(locArr);
+			var canvas = document.getElementById('myCanvas');
+			var context = canvas.getContext('2d');
+			locArr.forEach(function(city){
+				context.beginPath();
+				context.arc(city.x, city.y, 10, 0, Math.PI*2, true);
+				context.closePath();
+				context.fillStyle = "red";
+				context.fill();
+			});
+		}
+	});
+}
 
 $(document).ready(function(){
 
@@ -136,8 +154,9 @@ $(document).ready(function(){
 	var imageObj = new Image();
 
 	imageObj.onload = function() {
-		context.drawImage(imageObj, 0, 0, 800, 600);
+		context.drawImage(imageObj, 0, 0, 682, 950);
 	};
-	imageObj.src = 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
+	imageObj.src = 'finland.jpg';
 
+	resetCanvas();
 });

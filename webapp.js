@@ -10,6 +10,24 @@ app.use(express.static('static'));
 
 app.get('/bundle.js', browserify(['react', 'react-dom', 'react-simple-dropdown']));
 
+app.get('/locations', function(req, res){
+	db.collection('sijainnit').find({}).toArray(function(err,docs){
+		locations = docs[0];
+		delete locations._id;
+		console.log(locations);
+		res.json(locations);
+	});
+});
+
+app.get('/routes', function(req, res) {
+		db.collection('etaisyydet').find({}).toArray(function(err, docs){
+			distances = docs[0];
+			delete distances._id;
+			const route = new Graph(distances);
+			res.json(route);
+		});
+});
+
 app.get('/api/:start/:goal', function(req, res) {
 		db.collection('etaisyydet').find({}).toArray(function(err, docs){
 			distances = docs[0];

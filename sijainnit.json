@@ -1,0 +1,42 @@
+{
+	"Helsinki" : {
+      "name": "Helsinki",
+      "x": 260,
+      "y": 825
+		},
+	"Turku" : {
+    "name": "Turku",
+    "x": 120,
+    "y": 775
+		},
+	"Tampere" : {
+    "name": "Tampere",
+    "x": 200,
+    "y": 700
+		},
+	"Kuopio" : {
+    "name": "Kuopio",
+    "x": 500,
+    "y": 490
+		},
+	"Jyväskylä" : {
+    "name": "Jyväskylä",
+    "x": 341,
+    "y": 580
+		},
+	"Kouvola" : {
+    "name": "Kouvola",
+    "x": 425,
+    "y": 750
+		},
+	"Oulu" : {
+    "name": "Oulu",
+    "x": 321,
+    "y": 200
+		},
+	"Vaasa" : {
+    "name": "Vaasa",
+    "x": 125,
+    "y": 475
+		}
+}
