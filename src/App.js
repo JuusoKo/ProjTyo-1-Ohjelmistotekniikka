@@ -186,6 +186,7 @@ $(document).ready(function(){
 
 					$("#distanceDiv span").text("Etäisyys: " + response.cost + "km");
 					if(response.path !== null) {
+						$("#routeDiv").text("");
 						response.path.forEach(function(city){
 							$("#routeDiv").append('<span>' +  " " + city + " " + '</span>');
 						});
