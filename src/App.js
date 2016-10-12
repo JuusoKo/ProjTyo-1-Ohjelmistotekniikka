@@ -1,4 +1,4 @@
-const Graph = require('node-dijkstra');
+var Graph = require('node-dijkstra');
 
 var CustomDropdown = React.createClass({
 		getInitialState: function() {
