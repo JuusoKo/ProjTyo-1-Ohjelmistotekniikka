@@ -1,8 +1,5 @@
 const Graph = require('node-dijkstra');
 
-
-
-
 var CustomDropdown = React.createClass({
 		getInitialState: function() {
 				return {
@@ -13,9 +10,7 @@ var CustomDropdown = React.createClass({
 		},
 
 		select: function(item) {
-			console.log(item);
 			this.setState({ selected: item});
-			console.log(this.state.selected);
 		},
 
 		show: function() {
@@ -73,7 +68,6 @@ var cities = [{
 		name: "Turku",
 }];
 
-sessionStorage.setItem("citiesArray", cities);
 
 ReactDOM.render(<CustomDropdown list={cities} /*selected={cities[0]}*/ />, document.getElementById("start-dropdown"));
 ReactDOM.render(<CustomDropdown list={cities} /*selected={cities[1]}*/ />, document.getElementById("goal-dropdown"));
@@ -83,8 +77,6 @@ var resetCanvas = function(){
 		url: "/locations",
 		success: function(response){
 			var locArr = $.map(response, function(el) { return el });
-			console.log(locArr);
-			sessionStorage.setItem('locationArray', locArr);
 			var canvas = document.getElementById('myCanvas');
 			var context = canvas.getContext('2d');
 			locArr.forEach(function(city){
@@ -181,25 +173,20 @@ $(document).ready(function(){
 		<div>Hello, world!</div>,
 	     	document.getElementById('hellodiv')
 	);
-	console.log("JUMALITA")
 
 
 	$("#calcDistance").click(function() {
-		console.log("pls");
 
 
 		var start = $("#start-dropdown").children(".dropdown-container").children(".dropdown-display").children("span").text();
 		var goal =  $("#goal-dropdown").children(".dropdown-container").children(".dropdown-display").children("span").text();
-		console.log(start + " " + goal);
 		$.ajax({
 				url: "/api/"+start+"/"+goal,
 				success: function(response){
-					console.log(response);
 
 					$("#distanceDiv span").text("Etäisyys: " + response.cost + "km");
 					if(response.path !== null) {
 						response.path.forEach(function(city){
-							console.log(city);
 							$("#routeDiv").append('<span>' +  " " + city + " " + '</span>');
 						});
 					}
