@@ -1,6 +1,6 @@
 var express = require('express');
 var browserify = require('browserify-middleware');
-const Graph = require('node-dijkstra');
+var Graph = require('node-dijkstra');
 
 var MongoClient = require('mongodb').MongoClient;
 
